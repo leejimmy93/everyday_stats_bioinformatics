@@ -1,0 +1,19 @@
+---
+title: "sort_list_python"
+author: "Ruijuan Li"
+date: "9/12/2017"
+output: html_document
+---
+
+# sort function for list
+https://wiki.python.org/moin/HowTo/Sorting
+https://leetcode.com/problems/move-zeroes/description/ 
+
+# math module 
+https://leetcode.com/problems/construct-the-rectangle/description/
+
+# collections.Counter 
+https://pymotw.com/2/collections/counter.html 
+https://leetcode.com/problems/ransom-note/description/ 
+
+

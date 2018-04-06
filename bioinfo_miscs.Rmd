@@ -1,0 +1,65 @@
+---
+title: "bioinfo_miscs"
+author: "Ruijuan Li"
+date: "1/11/2017"
+output: html_document
+---
+
+# gff file I used 
+```{r}
+# A05	blat	gene	19903333	19907237	1.0000	-	.	ID=Bra022192;Name=Bra022192
+```
+
+# genomic sequence I used 
+```{r}
+# Brapa_sequence_v1.5.fa (PATH: /Network/Servers/avalanche.plb.ucdavis.edu/Volumes/Mammoth/Users/ruijuanli/Reference/B.rapa/Brapa_sequence_v1.5.fa)
+```
+
+# 
+```{r}
+# bedtools getfasta -fi ref_genome.fa -bed *.gff -fo output.fa 
+```
+
+#  07-24-2017: mixed linear model in R 
+```{r} 
+factorial(3) == 3*2*1
+factorial(4) == 4*3*2*1
+
+# https://www.youtube.com/watch?v=9BDA5b-gtbc
+# summary: mixed linear model, ANOVA VS mixed linear model, error term in ANOVA are present as random effect in mixed linear model, unique intercept and unique slope for random effect. lme4 for mixed effect model. 
+```
+
+# 07-25-2017 ANOVA in R 
+
+Analysis of Variance (ANOVA) is a commonly used statistical technique for investigating data by comparing the means of subsets of the data. The base case is the one-way ANOVA which is an extension of two-sample t test for independent groups covering situations where there are more than two groups being compared.
+
+In one-way ANOVA the data is sub-divided into groups based on a single classification factor and the standard terminology used to describe the set of factor levels is treatment even though this might not always have meaning for the particular application. There is variation in the measurements taken on the individual components of the data set and ANOVA investigates whether this variation can be explained by the grouping introduced by the classification factor.
+
+As an example we consider one of the data sets available with R relating to an experiment into plant growth. The purpose of the experiment was to compare the yields on the plants for a control group and two treatments of interest. The response variable was a measurement taken on the dried weight of the plants.
+
+The first step in the investigation is to take a copy of the data frame so that we can make some adjustments as necessary while leaving the original data alone. We use the factor function to re-define the labels of the group variables that will appear in the output and graphs: 
+
+```{r}
+plant.df = PlantGrowth
+colnames(plant.df)
+summary(plant.df)
+plant.df$group = factor(plant.df$group,
+  labels = c("Control", "Treatment 1", "Treatment 2"))
+summary(plant.df)
+```
+
+The labels argument is a list of names corresponding to the levels of the group factor variable.
+
+A boxplot of the distributions of the dried weights for the three competing groups is created using the ggplot package:
+
+```{r}
+require(ggplot2)
+ 
+ggplot(plant.df, aes(x = group, y = weight)) +
+  geom_boxplot(fill = "grey80", colour = "blue") +
+  scale_x_discrete() + xlab("Treatment Group") +
+  ylab("Dried weight of plants")
+
+```
+
+

@@ -1,0 +1,9 @@
+excited: 15, 16, 15
+joyous: 17, 17, 18
+curious: 14, 13, 14
+eager: 15, 15, 17
+confused: 14, 14, 15
+frustrated: 16, 17, 18
+bored: 18, 18, 20
+
+

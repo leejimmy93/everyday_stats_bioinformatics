@@ -1,0 +1,14 @@
+---
+title: "Bayes_MCMC"
+author: "Ruijuan Li"
+date: "7/28/2017"
+output: 
+  html_document: 
+    keep_md: yes
+---
+
+# bayes 
+```{r}
+
+```
+

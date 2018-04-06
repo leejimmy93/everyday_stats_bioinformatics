@@ -1,0 +1,40 @@
+---
+title: "binomial_model_Rstan"
+author: "Ruijuan Li"
+date: "8/31/2017"
+output: 
+  html_document: 
+    keep_md: yes
+---
+
+### Counting and classfication 
+
+#### Notes
+
+Analysis of proportion throw away information compared to count, becuase we lose the sample size information, eg 10/20 == 1/2 
+
+Two most common count regressions: 
+
+      1) Binomial regression
+      2) Poisson regression: a binomial model with a very large max but with a very small probability per trial. 
+
+
+#### Binomial regression 
+!(Binomial model)[]
+
+y is the observed success count, p is the probability any particular "trial" is a success, and n is the number of trials. 
+
+#### chimpanzees prosocial experiment eg 
+```{r}
+library(tidyverse)
+
+library(rethinking)
+data("chimpanzees")
+d <- chimpanzees
+d %>% head()
+```
+
+math form of the model 
+
+L indicates pulled_left, P indicates 
+

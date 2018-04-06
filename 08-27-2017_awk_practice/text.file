@@ -1,0 +1,6 @@
+total 16
+drwxr-xr-x   5 ruijuanli  staff   170B Aug 28 10:37 ./
+drwxr-xr-x  31 ruijuanli  staff   1.0K Aug 28 10:29 ../
+-rw-r--r--   1 ruijuanli  staff    26B Aug 28 10:34 awk.sh
+-rw-r--r--   1 ruijuanli  staff     0B Aug 28 10:37 text.file
+-rw-r--r--   1 ruijuanli  staff    36B Aug 28 10:36 user_shell.awk

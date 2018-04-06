@@ -1,0 +1,28 @@
+---
+title: "DSI_R_workshop"
+author: "Ruijuan Li"
+date: "4/28/2017"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+# MClapply? parallel 
+# use system.time() to benchmark 
+# use lapply/sapply() rather than for() loops 
+# empty list() or dataframe() VS full list or dataframe to define then fill in. 
+# compile function "byte compile"
+# Rprof()
+?Rprof
+?match
+# vectorize ... 
+# trace()
+?trace
+# avoid %in% 
+# create R package 
+# how to 
+# subset by matrix, matix subset by vector 
+# matrix(seq(1:10), nrow = 2)
+# matrix VS data.frame VS as.data.frame()
+
+```
+
