@@ -32,7 +32,7 @@ also chapter 11 monsters and mixtures has one section talking about over-dispers
 
 in Bioinformatics analysis, such as DE, we use negative-binomial model to fit the count data to account for the over-dispersion problem. edgeR uses common-dispersion, trend-dispersion and tag-wise dispersion to deal with over-dispersion problem, etc. 
 
-
+for ASE analysis, we also came across the concept of over-dispersion where the ASE ratio can be different for each SNP. To deal with this, we used multilevel Bayesian model and estimated over-dispersion for each SNV.  
 
 
 
