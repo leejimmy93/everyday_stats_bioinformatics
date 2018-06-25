@@ -1,0 +1,146 @@
+---
+title: "experimental_design"
+author: "Ruijuan Li"
+date: "6/22/2018"
+output: html_document
+---
+
+### reference 
+http://www.plantsciences.ucdavis.edu/AGR205/
+
+### T-test 
+
+use the barley malt data (ST&D p. 30) to test the Ho: mu = 78 against H1: mu != 78.
+```{r}
+data <- c(77.7, 76.0, 76.9, 74.6, 74.7, 76.5, 74.2, 75.4, 76.0, 76.0, 73.9, 77.4, 76.6, 77.3)
+
+t.test(data, mu = 78, alternative = "two.sided")
+# p < 0.05, Ho is rejected 
+```
+
+### power test
+
+Example: Two varieties will be compared for yield, with a previously estimated sample variance of s2 = 2.25. How many replications are needed to detect a difference of 1.5 tons/acre between varieties? Assume  = 5%, and  = 20%.
+```{r}
+library(pwr)
+
+power.t.test(delta = 1.5, sd = sqrt(2.25), sig.level = 0.05,
+             power = 0.8,
+             type = "two.sample",
+             alternative = "two.sided") 
+# need 17 samples for each group 
+```
+
+```{r}
+# Suppose that one experiment had t = 6 treatments with r = 2 replications each. The difference between the extreme means was 10 units, MSE= 5.46, and the required alpha = 5%. ??? 
+
+power.anova.test(groups = 6, n = 2,
+                 between.var = 10, within.var = 5.46, # here how to calculate within.variance 
+                 sig.level = 0.05)
+
+# Suppose that 6 treatments will be involved in a study and the anticipated difference between the extreme means is 15 units. What is the required sample size so that this difference willbedetectedat=1%andpower=90%,knowingthat2 =12? (note,t=6, =1%,= 10%,d=15,andMSE=2 =12).
+
+power.anova.test(groups = 6, power = 0.9,
+                 between.var = 15, within.var = sqrt(12), # same in here, not sure
+                 sig.level = 0.01) 
+```
+
+### F-test
+```{r}
+# we will assume that the two populations x and y have the same (unknown) variance σ2 and then test H0: μ1 = μ 2
+x <- c(19, 14, 15, 17, 20)
+y <- c(23, 19, 19, 21, 18)
+
+var.test(x, y, alternative = "two.sided")
+# p > 0.05, fail to reject, so the variance between the two groups of samples are equal 
+```
+
+### ANOVA
+
+The experiment involves inoculating five different cultures of one legume, clover, with strains of the nitrogen-fixing bacteria from another legume, alfalfa. As a sort of control, a sixth trial was run in which a composite of the five clover cultures was inoculated. There are 6 treatments (t = 6) and each treatment is given 5 replications (r = 5). 
+```{r}
+A <- c(19.4, 32.6, 27.0, 32.1, 33.0)
+B <- c(17.7, 24.8, 27.9, 25.2, 24.3)
+C <- c(17.0, 19.4, 9.1, 11.9, 15.8)
+D <- c(20.7, 21.0, 20.5, 18.8, 18.6)
+E <- c(14.3, 14.4, 11.8, 11.6, 14.2)
+F <- c(17.3, 19.4, 19.1, 16.9, 20.8)  
+
+data <- data.frame(group <- c(rep("A", 5), rep("B", 5), rep("C", 5), rep("D", 5), rep("E", 5), rep("F", 5)),
+                   value <- c(A, B, C, D, E, F))
+
+m1 <- lm(value ~ group, data = data)
+summary(m1)
+anova(m1)
+```
+
+Note that the ANOVA requires that the residual errors have a normal distribution and not that the complete population of original values have a normal distribution. If there is a treatment effect, mixing the different treatments will result in a distribution with multiple peaks. Therefore, the treatment effects are first subtracted, the residuals ij are calculated and then their normality is tested.
+
+```{r}
+C <- c(4.23, 4.38, 4.10, 3.99, 4.25)
+HC1 <- c(3.85, 3.78, 3.91, 3.94, 3.86)
+Propionic <- c(3.75, 3.65, 3.82, 3.69, 3.73)
+Butyric <- c(3.66, 3.67, 3.62, 3.54, 3.71)
+
+data <- data.frame(group <- c(rep("C", 5), rep("HC1", 5), rep("Propionic", 5), rep("Butyric", 5)),
+                   value <- c(C, HC1, Propionic, Butyric))
+
+m1 <- lm(value ~ group, data = data)
+summary(m1)
+anova(m1) 
+
+# still ANOVA 
+C <- c(1.21, 1.19, 1.17, 1.23, 1.29, 1.14)
+FeedA <- c(1.34, 1.41, 1.38, 1.29, 1.36, 1.42, 1.37, 1.32)
+FeedB <- c(1.45, 1.45, 1.51, 1.39, 1.44)
+FeedC <- c(1.31, 1.32, 1.28, 1.35, 1.41, 1.27, 1.37)
+
+data <- data.frame(group <- c(rep("C", 6), rep("FeedA", 8), rep("FeedB", 5), rep("FeedC", 7)),
+                   value <- c(C, FeedA, FeedB, FeedC))
+
+m1 <- lm(value ~ group, data = data)
+summary(m1)
+anova(m1) 
+```
+
+### linear model with block 
+This experiment was conducted to investigate the effect of estrogen on weight gain in sheep.
+The four treatments in the experiment are a factorial combinations of two separate factors: Gender of sheep (male and female) and amount of estrogen (S0 and S3). Although this experiment could be analyzed as a factorial, in this example we are treating the four treatments and four levels of a single factor (gender-estrogen combination).
+
+Sheep from four different ranches were involved in the experiment. Anticipating that differences in herd management may affect the results, the researchers blocked by ranch. The completeness of an RCBD demanded, therefore, that each ranch volunteer four sheep to the experiment, two males and two females, providing one replication of each treatment level from each ranch.
+
+https://sites.ualberta.ca/~lkgray/uploads/7/3/6/2/7362679/slides_-_ancova__blocking.pdf
+http://www.stat.wisc.edu/~ane/st572/notes/lec24.pdf
+http://www.stat.wisc.edu/courses/st572-larget/Spring2007/handouts15-4.pdf 
+
+```{r}
+library(lmerTest)
+
+A <- c(47, 52, 62, 51)
+B <- c(50, 54, 67, 57)
+C <- c(57, 53, 69, 57)
+D <- c(54, 65, 74, 59)
+
+data <- data.frame("sex" = c(rep("F", 4), rep("M", 4), rep("F", 4), rep("M", 4)),
+                   "trt" = c(rep("C", 8), rep("T", 8)), 
+                   "Block" = c(rep("A", 4), rep("B", 4), rep("C", 4), rep("D", 4)), 
+                   "value" = c(A, B, C, D))
+
+str(data)
+m1 <- lm(value ~ trt, data = data) 
+summary(m1) 
+
+m2 <- lm(value ~ trt + Block, data = data)
+summary(m2) 
+
+anova(m1, m2) 
+```
+
+should block be considered random or fixed effect? 
+
+http://www.stat.wisc.edu/courses/st572-larget/Spring2007/handouts17-4.pdf
+https://www.r-bloggers.com/latin-squares-design-in-r/
+
+
+
+
