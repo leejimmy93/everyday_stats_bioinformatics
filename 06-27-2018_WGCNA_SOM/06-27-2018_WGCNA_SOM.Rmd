@@ -1,0 +1,47 @@
+---
+title: "WGCNA_SOM"
+author: "Ruijuan Li"
+date: "6/27/2018"
+output: 
+  html_document: 
+    keep_md: yes
+---
+
+I am always confused about WGCNA and SOM, how to appropriately use these two different tools in bioinfo analysis 
+
+Here are the several major Qs I have: 
+
+### 1) 
+
+Both being a way to do co-expression anaysis work, what are the main idea/goal behind WGCNA and SOM, similarity and difference? (why they are useful?)
+
+Components of biological systems interact with each other to carry out different functions in the cell. We cannot understand the function and behavior of biological systems by studying individual components. Networks provides an efficient representation of complex reaction in the cells, as well as basis for math/stats models for the study of these systems. 
+
+### 2) 
+
+What are the analysis method being implemented in these two tools? Which one used ML algorithm? (what)
+
+WGCNA: in an usual gene co-expression network, each node correspond to a gene, and a pair of node is connected with an edge if there is a significant co-expression relationship between them. One of the major method people use to quantitate the co-expression relationship is Pearson correlation matrix. Pearson correlation matrix assumes that the gene expression data follows a normal distribution. Previously, people use the correlation matrix to calculate co-expression relationship and determine a value as the threshold to turn co-expression matrix into a matix formed by 1 and 0, then graphs could be made to visualize the co-expression network. WGCNA uses soft threshold instead of the hard threshold, which could cause information loss. Specifically, a power function was used to assess the topology so that the scale free topology could be reached. Scale free topology is the kind of network that we accept biology follows. 
+
+Then WGCNA uses tological overlap measures as input to cluster genes into different modules under the help of hierarchical clustering. Genes that sit in the same branches were grouped to the same module. Expression of genes within one module can be summarised by their 1st PC, which is termed as Eigengene. 
+
+SOM: is a type of artificial neural network that is trained using unsupervised learning to produce a low-dimensional representation of the training samples. The clustering algorithm is very similar to K-means clustering (difference? still need to explore later).   
+
+### 3) 
+How to use these two tools appropriately? (two example research used these two methods, eg. papers published) (how)
+
+http://www.plantphysiol.org/content/162/2/537.long#sec-8 (Chitwood et al. 2013) 
+
+
+### extra: 
+unsigned VS signed co-expression network 
+
+Pearson correlation between a pair of genes can be positive or negative values, for unsigned network, the sign will be taken into consideration so that only positively correlated genes will be clustered together, however, unsigned network doesn't account for the direction. That is to say, negatively correlated genes, together with positively correlated genes, will be clustered together into the same module. This is not recommended for co-expression network analysis because directions does matter! In gene expression data, negatively correlated genes tend to come from biologically very different categories. 
+
+http://www.peterlangfelder.com/signed-or-unsigned-which-network-type-is-preferable/
+
+
+
+
+
+
