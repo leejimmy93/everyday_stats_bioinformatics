@@ -398,7 +398,7 @@ stdr &lt;-
 data &lt;- 
 as.data.frame(mean) %&gt;% 
   cbind(as.data.frame(stdr)) %&gt;% 
-  mutate(max = mean + stdr, min = mean - stdr) 
+  mutate(max = mean + stdr, min = mean - stdr)  
 
 data$condition &lt;- colnames(user)[2:7]
 

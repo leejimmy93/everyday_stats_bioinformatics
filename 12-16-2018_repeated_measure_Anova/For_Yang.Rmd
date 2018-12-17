@@ -98,7 +98,7 @@ stdr <-
 data <- 
 as.data.frame(mean) %>% 
   cbind(as.data.frame(stdr)) %>% 
-  mutate(max = mean + stdr, min = mean - stdr) 
+  mutate(max = mean + stdr, min = mean - stdr)  
 
 data$condition <- colnames(user)[2:7]
 
