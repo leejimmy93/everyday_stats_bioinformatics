@@ -117,8 +117,8 @@ data[4:6,] %>%
   ylim(0, 1) 
 
 p1
-p2 
 ggsave("~/Desktop/everyday_stats_bioinformatics/12-16-2018_repeated_measure_Anova/p1.png", width = 7, height = 4)
+p2
 ggsave("~/Desktop/everyday_stats_bioinformatics/12-16-2018_repeated_measure_Anova/p2.png", width = 7, height = 4)
 ```
 

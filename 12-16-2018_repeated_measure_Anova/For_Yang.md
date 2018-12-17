@@ -463,13 +463,13 @@ p1
 ![](For_Yang_files/figure-html/unnamed-chunk-4-1.png)<!-- -->
 
 ```r
-p2 
+ggsave("~/Desktop/everyday_stats_bioinformatics/12-16-2018_repeated_measure_Anova/p1.png", width = 7, height = 4)
+p2
 ```
 
 ![](For_Yang_files/figure-html/unnamed-chunk-4-2.png)<!-- -->
 
 ```r
-ggsave("~/Desktop/everyday_stats_bioinformatics/12-16-2018_repeated_measure_Anova/p1.png", width = 7, height = 4)
 ggsave("~/Desktop/everyday_stats_bioinformatics/12-16-2018_repeated_measure_Anova/p2.png", width = 7, height = 4)
 ```
 
