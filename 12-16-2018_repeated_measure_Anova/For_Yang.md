@@ -446,7 +446,8 @@ data$condition <- colnames(user)[2:7]
 data[1:3,] %>% 
   ggplot() + 
   geom_point(mapping=aes(x=condition,y=mean),stat="identity", size = 7, color = "darkorange") + 
-  geom_errorbar(mapping=aes(x=condition,ymin=min,ymax=max), width = .1, position=position_dodge(0.01), color = "darkorange")  
+  geom_errorbar(mapping=aes(x=condition,ymin=min,ymax=max), width = .1, position=position_dodge(0.01), color = "darkorange") + 
+  ylim(0, 400)
 ```
 
 ![](For_Yang_files/figure-html/unnamed-chunk-4-1.png)<!-- -->
@@ -455,7 +456,8 @@ data[1:3,] %>%
 data[4:6,] %>% 
   ggplot() + 
   geom_point(mapping=aes(x=condition,y=mean),stat="identity", size = 7, color = "blue") + 
-  geom_errorbar(mapping=aes(x=condition,ymin=min,ymax=max), width = .2, position=position_dodge(0.01),  color = "blue")   
+  geom_errorbar(mapping=aes(x=condition,ymin=min,ymax=max), width = .1, position=position_dodge(0.01),  color = "blue") + 
+  ylim(0, 1) 
 ```
 
 ![](For_Yang_files/figure-html/unnamed-chunk-4-2.png)<!-- -->
