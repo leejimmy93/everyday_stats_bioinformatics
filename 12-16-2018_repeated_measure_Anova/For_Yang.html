@@ -407,7 +407,7 @@ data[1:3,] %&gt;%
   ggplot() + 
   geom_point(mapping=aes(x=condition,y=mean),stat=&quot;identity&quot;, size = 3, color = &quot;darkorange&quot;) + 
   geom_errorbar(mapping=aes(x=condition,ymin=min,ymax=max), width = .1, position=position_dodge(0.01), color = &quot;darkorange&quot;) + 
-  ylim(0, 400)
+  ylim(0, 400) 
 
 ggsave(&quot;~/Desktop/everyday_stats_bioinformatics/12-16-2018_repeated_measure_Anova/p1.png&quot;, width = 7, height = 4)
 
