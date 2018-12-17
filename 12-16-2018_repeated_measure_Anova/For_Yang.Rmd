@@ -51,8 +51,14 @@ model2=Anova(model1,idata=data.frame(conditions),idesign=~conditions,type="III")
 
 summary(model2,multivariate=F) # p-value is 1.654e-09, significant 
 
+# pairwise 
+c1=t.test(user_time$t0,user_time$t1,alternative="two.sided",mu=0,paired=T) 
+c2=t.test(user_time$t0,user_time$t2,alternative="two.sided",mu=0,paired=T) 
+c3=t.test(user_time$t1,user_time$t2,alternative="two.sided",mu=0,paired=T) 
+c1; c2; c3
+
 # adjust the p-value using Benferroni correction 
-p.adjust(1.654e-09, method = "bonferroni", n = 18)   
+p.adjust(c(c1$p.value, c2$p.value, c3$p.value), method = "bonferroni", n = 18)   
 ```
 
 ### accuracy
@@ -67,8 +73,14 @@ model4=Anova(model3,idata=data.frame(conditions2),idesign=~conditions2,type="III
 
 summary(model4,multivariate=F) # p-value is 1.654e-09, significant 
 
+# pairwise 
+c1.2=t.test(user_accuary$a0,user_accuary$a1,alternative="two.sided",mu=0,paired=T) 
+c2.2=t.test(user_accuary$a0,user_accuary$a2,alternative="two.sided",mu=0,paired=T) 
+c3.2=t.test(user_accuary$a1,user_accuary$a2,alternative="two.sided",mu=0,paired=T) 
+c1.2; c2.2; c3.2
+
 # adjust the p-value using Benferroni correction 
-p.adjust(8.525e-12, method = "bonferroni", n = 18)   
+p.adjust(c(c1.2$p.value, c2.2$p.value, c3.2$p.value), method = "bonferroni", n = 18)   
 ```
 
 ### plot the data, I assume there should be a better way to get this (95% CI)

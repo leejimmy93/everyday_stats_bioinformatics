@@ -243,12 +243,62 @@ summary(model2,multivariate=F) # p-value is 1.654e-09, significant
 ```
 
 ```r
-# adjust the p-value using Benferroni correction 
-p.adjust(1.654e-09, method = "bonferroni", n = 18)   
+# pairwise 
+c1=t.test(user_time$t0,user_time$t1,alternative="two.sided",mu=0,paired=T) 
+c2=t.test(user_time$t0,user_time$t2,alternative="two.sided",mu=0,paired=T) 
+c3=t.test(user_time$t1,user_time$t2,alternative="two.sided",mu=0,paired=T) 
+c1; c2; c3
 ```
 
 ```
-## [1] 2.9772e-08
+## 
+## 	Paired t-test
+## 
+## data:  user_time$t0 and user_time$t1
+## t = 4.666, df = 17, p-value = 0.0002217
+## alternative hypothesis: true difference in means is not equal to 0
+## 95 percent confidence interval:
+##  34.20583 90.67195
+## sample estimates:
+## mean of the differences 
+##                62.43889
+```
+
+```
+## 
+## 	Paired t-test
+## 
+## data:  user_time$t0 and user_time$t2
+## t = 6.9446, df = 17, p-value = 2.368e-06
+## alternative hypothesis: true difference in means is not equal to 0
+## 95 percent confidence interval:
+##   71.56459 134.02430
+## sample estimates:
+## mean of the differences 
+##                102.7944
+```
+
+```
+## 
+## 	Paired t-test
+## 
+## data:  user_time$t1 and user_time$t2
+## t = 10.059, df = 17, p-value = 1.42e-08
+## alternative hypothesis: true difference in means is not equal to 0
+## 95 percent confidence interval:
+##  31.89114 48.81997
+## sample estimates:
+## mean of the differences 
+##                40.35556
+```
+
+```r
+# adjust the p-value using Benferroni correction 
+p.adjust(c(c1$p.value, c2$p.value, c3$p.value), method = "bonferroni", n = 18)   
+```
+
+```
+## [1] 3.989848e-03 4.262060e-05 2.556817e-07
 ```
 
 ### accuracy
@@ -315,12 +365,62 @@ summary(model4,multivariate=F) # p-value is 1.654e-09, significant
 ```
 
 ```r
-# adjust the p-value using Benferroni correction 
-p.adjust(8.525e-12, method = "bonferroni", n = 18)   
+# pairwise 
+c1.2=t.test(user_accuary$a0,user_accuary$a1,alternative="two.sided",mu=0,paired=T) 
+c2.2=t.test(user_accuary$a0,user_accuary$a2,alternative="two.sided",mu=0,paired=T) 
+c3.2=t.test(user_accuary$a1,user_accuary$a2,alternative="two.sided",mu=0,paired=T) 
+c1.2; c2.2; c3.2
 ```
 
 ```
-## [1] 1.5345e-10
+## 
+## 	Paired t-test
+## 
+## data:  user_accuary$a0 and user_accuary$a1
+## t = -6.3852, df = 17, p-value = 6.779e-06
+## alternative hypothesis: true difference in means is not equal to 0
+## 95 percent confidence interval:
+##  -0.1079120 -0.0543102
+## sample estimates:
+## mean of the differences 
+##             -0.08111111
+```
+
+```
+## 
+## 	Paired t-test
+## 
+## data:  user_accuary$a0 and user_accuary$a2
+## t = -8.309, df = 17, p-value = 2.171e-07
+## alternative hypothesis: true difference in means is not equal to 0
+## 95 percent confidence interval:
+##  -0.1699758 -0.1011353
+## sample estimates:
+## mean of the differences 
+##              -0.1355556
+```
+
+```
+## 
+## 	Paired t-test
+## 
+## data:  user_accuary$a1 and user_accuary$a2
+## t = -8.1534, df = 17, p-value = 2.816e-07
+## alternative hypothesis: true difference in means is not equal to 0
+## 95 percent confidence interval:
+##  -0.06853285 -0.04035604
+## sample estimates:
+## mean of the differences 
+##             -0.05444444
+```
+
+```r
+# adjust the p-value using Benferroni correction 
+p.adjust(c(c1.2$p.value, c2.2$p.value, c3.2$p.value), method = "bonferroni", n = 18)   
+```
+
+```
+## [1] 1.220301e-04 3.906928e-06 5.068294e-06
 ```
 
 ### plot the data, I assume there should be a better way to get this (95% CI)
