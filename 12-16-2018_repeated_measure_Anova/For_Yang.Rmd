@@ -2,7 +2,9 @@
 title: "For_Yang"
 author: "Ruijuan Li"
 date: "12/16/2018"
-output: html_document
+output: 
+  html_document: 
+    keep_md: yes
 ---
 
 Yang has user study inforamtion from 18 people, including time and accurary value collected from three conditions. These 3 conditions are repeated measures, so I will use repeated measure to check whether there is significant difference among the three conditions interms of time and accuary. Benferroni correction will be used afterwards to correct for the P-value. In the end, need to make plot to show the result. 
