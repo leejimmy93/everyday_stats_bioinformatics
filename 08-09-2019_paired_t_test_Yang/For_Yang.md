@@ -52,11 +52,11 @@ names(table)
 ```
 
 ```
-##  [1] "peer_emotions.txt"      "self_angle.txt"        
-##  [3] "self_disirable.txt"     "self_ease_of_learn.txt"
-##  [5] "self_effectiveness.txt" "self_helpfulness.txt"  
-##  [7] "self_intensity.txt"     "self_look.txt"         
-##  [9] "self_recognition.txt"   "self_satisfaction.txt" 
+##  [1] "peer_emotions.txt"       "self_aesthetics.txt"    
+##  [3] "self_angle.txt"          "self_disirable.txt"     
+##  [5] "self_ease_of_learn.txt"  "self_effectiveness.txt" 
+##  [7] "self_expressiveness.txt" "self_helpfulness.txt"   
+##  [9] "self_intensity.txt"      "self_satisfaction.txt"  
 ## [11] "self_time.txt"
 ```
 
@@ -89,6 +89,20 @@ result
 ## sample estimates:
 ## mean of the differences 
 ##              -0.2869048 
+## 
+## 
+## $self_aesthetics.txt
+## 
+## 	Paired t-test
+## 
+## data:  table[[i]]$handdraw and table[[i]]$emog
+## t = -2.6766, df = 20, p-value = 0.0145
+## alternative hypothesis: true difference in means is not equal to 0
+## 95 percent confidence interval:
+##  -2.033524 -0.252190
+## sample estimates:
+## mean of the differences 
+##               -1.142857 
 ## 
 ## 
 ## $self_angle.txt
@@ -147,6 +161,20 @@ result
 ##               -2.285714 
 ## 
 ## 
+## $self_expressiveness.txt
+## 
+## 	Paired t-test
+## 
+## data:  table[[i]]$handdraw and table[[i]]$emog
+## t = -3.1788, df = 20, p-value = 0.004719
+## alternative hypothesis: true difference in means is not equal to 0
+## 95 percent confidence interval:
+##  -1.3407389 -0.2783087
+## sample estimates:
+## mean of the differences 
+##              -0.8095238 
+## 
+## 
 ## $self_helpfulness.txt
 ## 
 ## 	Paired t-test
@@ -173,34 +201,6 @@ result
 ## sample estimates:
 ## mean of the differences 
 ##               -1.047619 
-## 
-## 
-## $self_look.txt
-## 
-## 	Paired t-test
-## 
-## data:  table[[i]]$handdraw and table[[i]]$emog
-## t = -2.6766, df = 20, p-value = 0.0145
-## alternative hypothesis: true difference in means is not equal to 0
-## 95 percent confidence interval:
-##  -2.033524 -0.252190
-## sample estimates:
-## mean of the differences 
-##               -1.142857 
-## 
-## 
-## $self_recognition.txt
-## 
-## 	Paired t-test
-## 
-## data:  table[[i]]$handdraw and table[[i]]$emog
-## t = -3.1788, df = 20, p-value = 0.004719
-## alternative hypothesis: true difference in means is not equal to 0
-## 95 percent confidence interval:
-##  -1.3407389 -0.2783087
-## sample estimates:
-## mean of the differences 
-##              -0.8095238 
 ## 
 ## 
 ## $self_satisfaction.txt
