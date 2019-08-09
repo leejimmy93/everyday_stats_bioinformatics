@@ -1,0 +1,36 @@
+---
+title: "For_Yang"
+output: 
+  html_document: 
+    keep_md: yes
+---
+
+* The goal of this script is to do paired t-test between handrawn and emoj group and see whether
+there is significant difference between the two groups 
+
+```{r}
+library(tidyverse)
+```
+
+### load data & format 
+```{r}
+path <- "/Users/rli/Desktop/Yang"
+files <- list.files(path=path, pattern = "*.txt")
+setwd(path)
+files <- files[c(1, 3:12)]
+
+table <- lapply(files, function(x) read.table(x)) 
+names(table) <- files 
+length(table)
+names(table) 
+
+colnames(table$peer_emotions.txt)[2] <- "emog"
+```
+
+### do test and output result 
+```{r}
+lapply(names(table), function(i){
+  t.test(table[[i]]$handdraw, table[[i]]$emog, alternative="two.sided",mu=0,paired=T) 
+}) 
+```
+
