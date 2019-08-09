@@ -29,8 +29,12 @@ colnames(table$peer_emotions.txt)[2] <- "emog"
 
 ### do test and output result 
 ```{r}
+result <- 
 lapply(names(table), function(i){
   t.test(table[[i]]$handdraw, table[[i]]$emog, alternative="two.sided",mu=0,paired=T) 
 }) 
+
+names(result) <- files
+result  
 ```
 

@@ -67,13 +67,17 @@ colnames(table$peer_emotions.txt)[2] <- "emog"
 ### do test and output result 
 
 ```r
+result <- 
 lapply(names(table), function(i){
   t.test(table[[i]]$handdraw, table[[i]]$emog, alternative="two.sided",mu=0,paired=T) 
 }) 
+
+names(result) <- files
+result  
 ```
 
 ```
-## [[1]]
+## $peer_emotions.txt
 ## 
 ## 	Paired t-test
 ## 
@@ -87,7 +91,7 @@ lapply(names(table), function(i){
 ##              -0.2869048 
 ## 
 ## 
-## [[2]]
+## $self_angle.txt
 ## 
 ## 	Paired t-test
 ## 
@@ -101,7 +105,7 @@ lapply(names(table), function(i){
 ##              -0.7142857 
 ## 
 ## 
-## [[3]]
+## $self_disirable.txt
 ## 
 ## 	Paired t-test
 ## 
@@ -115,7 +119,7 @@ lapply(names(table), function(i){
 ##               -2.333333 
 ## 
 ## 
-## [[4]]
+## $self_ease_of_learn.txt
 ## 
 ## 	Paired t-test
 ## 
@@ -129,7 +133,7 @@ lapply(names(table), function(i){
 ##              -0.7142857 
 ## 
 ## 
-## [[5]]
+## $self_effectiveness.txt
 ## 
 ## 	Paired t-test
 ## 
@@ -143,7 +147,7 @@ lapply(names(table), function(i){
 ##               -2.285714 
 ## 
 ## 
-## [[6]]
+## $self_helpfulness.txt
 ## 
 ## 	Paired t-test
 ## 
@@ -157,7 +161,7 @@ lapply(names(table), function(i){
 ##                -2.47619 
 ## 
 ## 
-## [[7]]
+## $self_intensity.txt
 ## 
 ## 	Paired t-test
 ## 
@@ -171,7 +175,7 @@ lapply(names(table), function(i){
 ##               -1.047619 
 ## 
 ## 
-## [[8]]
+## $self_look.txt
 ## 
 ## 	Paired t-test
 ## 
@@ -185,7 +189,7 @@ lapply(names(table), function(i){
 ##               -1.142857 
 ## 
 ## 
-## [[9]]
+## $self_recognition.txt
 ## 
 ## 	Paired t-test
 ## 
@@ -199,7 +203,7 @@ lapply(names(table), function(i){
 ##              -0.8095238 
 ## 
 ## 
-## [[10]]
+## $self_satisfaction.txt
 ## 
 ## 	Paired t-test
 ## 
@@ -213,7 +217,7 @@ lapply(names(table), function(i){
 ##               -1.904762 
 ## 
 ## 
-## [[11]]
+## $self_time.txt
 ## 
 ## 	Paired t-test
 ## 
